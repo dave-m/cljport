@@ -1,6 +1,8 @@
 # clj_port
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure implementation of the Functional Kats Erlang tutorial
+
+https://github.com/marjaimate/erlport
 
 ## Usage
 
