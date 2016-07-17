@@ -2,7 +2,7 @@
 
 (defn uuid [] (str (java.util.UUID/randomUUID)))
 
-(defn airport
+(defn create-airport
   "Create an airport"
   [name]
   {:name name
@@ -10,7 +10,7 @@
     :status :open
     :runways []})
 
-(defn runway
+(defn create-runway
   "A runway"
   []
   {:id (uuid)
@@ -18,7 +18,7 @@
     :status :open})
 
 ;; Debate ref vs map, since we'll have a single point of control?
-(defn airplane
+(defn create-airplane
   "An airplane"
   [name]
   {:id (uuid)
@@ -26,5 +26,7 @@
     :status :in-flight})
 
 (defn land-airplane
-  [airplane runway]
-  (airplane runway))
+  [ap rw]
+  ;; Apparently because clojure tries to call [] as a fn?
+  (#(vector (assoc ap :status :preparing-to-land)
+           (assoc rw :in-use true))))

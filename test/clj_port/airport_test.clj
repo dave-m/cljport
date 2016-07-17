@@ -4,8 +4,8 @@
 
 (deftest test-airplane
   (testing "Landing"
-    (let [ap (airplane "Plane 1")
-          rw (runway)
+    (let [ap (create-airplane "Plane 1")
+          rw (create-runway)
           [lap lrw] (land-airplane ap rw)]
-      (is (= :landed (:status lap)))
-      (is (true? (:in-use runway))))))
+      (is (= :preparing-to-land (:status lap)))
+      (is (true? (:in-use lrw))))))
